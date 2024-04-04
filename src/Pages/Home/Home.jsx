@@ -24,7 +24,7 @@ const Home = () => {
             </div>
             <Navbar></Navbar>
             {/* main home page layout */}
-            <div className="grid grid-cols-4 gap-3">
+            <div className="grid grid-cols-4 gap-10">
                 <div><LeftSideBar></LeftSideBar></div>
                 <div className="col-span-2">
                     Main news
