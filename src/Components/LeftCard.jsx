@@ -1,6 +1,7 @@
 
 import moment from "moment";
 import { FaBriefcase } from "react-icons/fa";
+import PropTypes from 'prop-types';
 
 const LeftCard = ({ letCardImag1, title }) => {
     return (
@@ -23,3 +24,7 @@ const LeftCard = ({ letCardImag1, title }) => {
 };
 
 export default LeftCard;
+LeftCard.propTypes = {
+    letCardImag1:PropTypes.string,
+    title:PropTypes.string,
+}
