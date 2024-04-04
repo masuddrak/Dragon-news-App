@@ -1,12 +1,15 @@
-import { Link } from "react-router-dom";
+import { Link, useLoaderData } from "react-router-dom";
 import Header from "./Shared/Header";
 import Navbar from "./Shared/Navbar";
 import Marquee from "react-fast-marquee";
 import LeftSideBar from "./LeftSideBar/LeftSideBar";
 import RightSideBar from "./RightSideBar/RightSideBar";
+import NewsCard from "./NewsCard";
 
 
 const Home = () => {
+    const allNews=useLoaderData()
+    console.log(allNews)
     return (
         <div className="font-Poppins">
             <Header></Header>
@@ -27,7 +30,9 @@ const Home = () => {
             <div className="grid grid-cols-4 gap-10">
                 <div><LeftSideBar></LeftSideBar></div>
                 <div className="col-span-2">
-                    Main news
+                    {
+                        allNews.map(news=><NewsCard key={news._id} news={news}></NewsCard>)
+                    }
                 </div>
                 <div><RightSideBar></RightSideBar></div>
             </div>

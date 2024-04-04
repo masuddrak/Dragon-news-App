@@ -11,7 +11,7 @@ const LeftSideBar = () => {
         .then(res=>res.json())
         .then(data=>setCatagorys(data))
     },[])
-    console.log(catagorys)
+    // console.log(catagorys)
     return (
         <div>
             <h1 className="text-xl font-bold mb-3">All Category</h1>
