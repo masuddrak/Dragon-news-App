@@ -4,7 +4,7 @@ import LeftCard from "../../../Components/LeftCard";
 import letCardImag1 from '../../../assets/1.png'
 import letCardImag2 from '../../../assets/2.png'
 import letCardImag3 from '../../../assets/3.png'
-const LeftSideBar = () => {
+const LeftSideBar = ({filterCategory}) => {
     const [catagorys,setCatagorys]=useState([])
     useEffect(()=>{
         fetch('categories.json')
@@ -18,8 +18,9 @@ const LeftSideBar = () => {
             <div className="ml-3">
                 {catagorys.map(catagory=><NavLink 
                 key={catagory.id}
-                className={`block mb-3 ${(isActive)=>isActive?"bg-green-400":""}`}
-                to={`/${catagory.id}`}
+                className={`block mb-3 }`}
+                // to={`/${catagory.id}`}
+                onClick={()=>filterCategory(catagory.id)}
                 >{catagory.name}</NavLink>)}
             </div>
             <div className="space-y-4">

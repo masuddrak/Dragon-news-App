@@ -29,7 +29,7 @@ const AuthComponet = ({ children }) => {
             observID()
         })
     },[])
-    const authInfo = { createUser,loginUser,logOut ,user,firebaseLoader}
+    const authInfo = { createUser,loginUser,logOut ,user,firebaseLoader,setFirebaseLoader}
     return (
         <authContext.Provider value={authInfo}>
             {children}

@@ -5,11 +5,22 @@ import Marquee from "react-fast-marquee";
 import LeftSideBar from "./LeftSideBar/LeftSideBar";
 import RightSideBar from "./RightSideBar/RightSideBar";
 import NewsCard from "./NewsCard";
+import {  useState } from "react";
 
 
 const Home = () => {
-    const allNews=useLoaderData()
-    console.log(allNews)
+    const allNews = useLoaderData()
+    const [isAllNew,setIsAllNews]=useState(true)
+    const [categoryFinterData,setCategoryFinterData]=useState(allNews)
+    // console.log(allNews)
+   
+    const filterCategory = (catagoryID) => {
+        setIsAllNews(false)
+        console.log("dsata filter",catagoryID)
+        const filterData=allNews.filter(news=>news.category_id==catagoryID)
+        setCategoryFinterData(filterData)
+       
+    }
     return (
         <div className="font-Poppins">
             <Header></Header>
@@ -28,10 +39,10 @@ const Home = () => {
             <Navbar></Navbar>
             {/* main home page layout */}
             <div className="grid grid-cols-4 gap-10">
-                <div><LeftSideBar></LeftSideBar></div>
-                <div className="col-span-2">
-                    {
-                        allNews.map(news=><NewsCard key={news._id} news={news}></NewsCard>)
+                <div><LeftSideBar filterCategory={filterCategory}></LeftSideBar></div>
+                <div className="col-span-2 space-y-10">
+                    {isAllNew?allNews.map(news => <NewsCard key={news._id} news={news}></NewsCard>):
+                    categoryFinterData.map(news => <NewsCard key={news._id} news={news}></NewsCard>)
                     }
                 </div>
                 <div><RightSideBar></RightSideBar></div>

@@ -6,8 +6,9 @@ import { authContext } from "../AuthComponent/AuthComponet";
 const Login = () => {
     const { loginUser } = useContext(authContext)
     const location = useLocation()
-    console.log("login location", location.state)
+    console.log("login location", location)
     const naviget = useNavigate()
+
 
     const loginHanler = (e) => {
         e.preventDefault()
@@ -17,8 +18,10 @@ const Login = () => {
         // console.log(email,password)
         loginUser(email, password)
             .then(result => {
-                console.result(result.user)
-                naviget(location?.state ? location.state : "/")
+                if (result.user) {
+                    console.log(result.user)
+                    naviget(location.state?.from.pathname || "/")
+                }
             })
             .catch(error => {
                 console.log(error.message)
